@@ -39,3 +39,19 @@ parallelism.default: 1
 # 默认是 open，如果 zookeeper security 启用了该值会更改成 creator
 # high-availability.zookeeper.client.acl: open
 ```
+
+容错和检查点 配置
+
+```shell
+# 用于存储和检查点状态
+# state.backend: filesystem
+
+# 存储检查点的数据文件和元数据的默认目录
+# state.checkpoints.dir: hdfs://namenode-host:port/flink-checkpoints
+
+# savepoints 的默认目标目录(可选)
+# state.savepoints.dir: hdfs://namenode-host:port/flink-checkpoints
+
+# 用于启用/禁用增量 checkpoints 的标志
+# state.backend.incremental: false
+```
