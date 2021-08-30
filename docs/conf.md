@@ -1,6 +1,6 @@
 基础配置
 
-```shell
+```yaml
 # jobManager 的IP地址
 jobmanager.rpc.address: localhost
 
@@ -26,7 +26,7 @@ parallelism.default: 1
 
 高可用性配置
 
-```shell
+```yaml
 # 可以选择 'NONE' 或者 'zookeeper'.
 # high-availability: zookeeper
 
@@ -42,7 +42,7 @@ parallelism.default: 1
 
 容错和检查点 配置
 
-```shell
+```yaml
 # 用于存储和检查点状态
 # state.backend: filesystem
 
@@ -54,4 +54,18 @@ parallelism.default: 1
 
 # 用于启用/禁用增量 checkpoints 的标志
 # state.backend.incremental: false
+```
+
+web 前端配置
+
+```yaml
+# 基于 Web 的运行时监视器侦听的地址.
+#jobmanager.web.address: 0.0.0.0
+
+#  Web 的运行时监视器端口
+rest.port: 8081
+
+# 是否从基于 Web 的 jobmanager 启用作业提交
+# jobmanager.web.submit.enable: false
+
 ```
