@@ -107,11 +107,6 @@ Flink 集群安全配置
 Zookeeper 安全配置
 
 ```
-
-2
-3
-4
-5
 # 覆盖以下配置以提供自定义 ZK 服务名称
 # zookeeper.sasl.service-name: zookeeper
 
