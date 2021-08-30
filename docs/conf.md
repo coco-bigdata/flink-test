@@ -113,3 +113,24 @@ Zookeeper 安全配置
 # 该配置必须匹配 "security.kerberos.login.contexts" 中的列表（含有一个）
 # zookeeper.sasl.login-context-name: Client
 ```
+
+HistoryServer
+
+```yaml
+# 你可以通过 bin/historyserver.sh (start|stop) 命令启动和关闭 HistoryServer
+
+# 将已完成的作业上传到的目录
+# jobmanager.archive.fs.dir: hdfs:///completed-jobs/
+
+# 基于 Web 的 HistoryServer 的地址
+# historyserver.web.address: 0.0.0.0
+
+# 基于 Web 的 HistoryServer 的端口号
+# historyserver.web.port: 8082
+
+# 以逗号分隔的目录列表，用于监视已完成的作业
+# historyserver.archive.fs.dir: hdfs:///completed-jobs/
+
+# 刷新受监控目录的时间间隔（以毫秒为单位）
+# historyserver.archive.fs.refresh-interval: 10000
+```
