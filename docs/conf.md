@@ -67,5 +67,54 @@ rest.port: 8081
 
 # 是否从基于 Web 的 jobmanager 启用作业提交
 # jobmanager.web.submit.enable: false
+```
 
+高级配置
+
+```yaml
+# io.tmp.dirs: /tmp
+
+# 是否应在 TaskManager 启动时预先分配 TaskManager 管理的内存
+# taskmanager.memory.preallocate: false
+
+# 类加载解析顺序，是先检查用户代码 jar（“child-first”）还是应用程序类路径（“parent-first”）。 默认设置指示首先从用户代码 jar 加载类
+# classloader.resolve-order: child-first
+
+
+# 用于网络缓冲区的 JVM 内存的分数。 这决定了 TaskManager 可以同时拥有多少流数据交换通道以及通道缓冲的程度。 如果作业被拒绝或者您收到系统没有足够缓冲区的警告，请增加此值或下面的最小/最大值。 另请注意，“taskmanager.network.memory.min”和“taskmanager.network.memory.max”可能会覆盖此分数
+
+# taskmanager.network.memory.fraction: 0.1
+# taskmanager.network.memory.min: 67108864
+# taskmanager.network.memory.max: 1073741824
+```
+
+Flink 集群安全配置
+
+```yaml
+# 指示是否从 Kerberos ticket 缓存中读取
+# security.kerberos.login.use-ticket-cache: true
+
+# 包含用户凭据的 Kerberos 密钥表文件的绝对路径
+# security.kerberos.login.keytab: /path/to/kerberos/keytab
+
+# 与 keytab 关联的 Kerberos 主体名称
+# security.kerberos.login.principal: flink-user
+
+# 以逗号分隔的登录上下文列表，用于提供 Kerberos 凭据（例如，`Client，KafkaClient`使用凭证进行 ZooKeeper 身份验证和 Kafka 身份验证）
+# security.kerberos.login.contexts: Client,KafkaClient
+```
+
+Zookeeper 安全配置
+
+```
+
+2
+3
+4
+5
+# 覆盖以下配置以提供自定义 ZK 服务名称
+# zookeeper.sasl.service-name: zookeeper
+
+# 该配置必须匹配 "security.kerberos.login.contexts" 中的列表（含有一个）
+# zookeeper.sasl.login-context-name: Client
 ```
