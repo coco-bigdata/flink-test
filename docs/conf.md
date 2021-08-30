@@ -134,3 +134,80 @@ HistoryServer
 # 刷新受监控目录的时间间隔（以毫秒为单位）
 # historyserver.archive.fs.refresh-interval: 10000
 ```
+
+slaves
+
+```yaml
+localhost
+```
+
+masters
+
+```yaml
+localhost:8081
+```
+
+zoo.cfg
+
+```yaml
+# 每个 tick 的毫秒数
+tickTime=2000
+
+# 初始同步阶段可以采用的 tick 数
+initLimit=10
+
+# 在发送请求和获取确认之间可以传递的 tick 数
+syncLimit=5
+
+# 存储快照的目录
+# dataDir=/tmp/zookeeper
+
+# 客户端将连接的端口
+clientPort=2181
+
+# ZooKeeper quorum peers
+server.1=localhost:2888:3888
+# server.2=host:peer-port:leader-port
+```
+
+日志配置
+
+```yaml
+log4j-cli.properties
+log4j-console.properties
+log4j-yarn-session.properties
+log4j.properties
+logback-console.xml
+logback-yarn.xml
+logback.xml
+```
+
+sql-client-defaults.yaml
+
+```yaml
+execution:
+  # 'batch' or 'streaming' execution
+  type: streaming
+  # allow 'event-time' or only 'processing-time' in sources
+  time-characteristic: event-time
+  # interval in ms for emitting periodic watermarks
+  periodic-watermarks-interval: 200
+  # 'changelog' or 'table' presentation of results
+  result-mode: changelog
+  # parallelism of the program
+  parallelism: 1
+  # maximum parallelism
+  max-parallelism: 128
+  # minimum idle state retention in ms
+  min-idle-state-retention: 0
+  # maximum idle state retention in ms
+  max-idle-state-retention: 0
+  
+deployment:
+  # general cluster communication timeout in ms
+  response-timeout: 5000
+  # (optional) address from cluster to gateway
+  gateway-address: ""
+  # (optional) port from cluster to gateway
+  gateway-port: 0
+```
